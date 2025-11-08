@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.protobuf)
     alias(libs.plugins.ksp)
 }
 
@@ -66,10 +67,31 @@ dependencies {
     // Xposed
     compileOnly(libs.xposed.api)
     implementation(libs.xphelper)
-    
+
+    // Json
+    implementation(libs.fastjson2)
+
+    // ProtoBuf
+    implementation(libs.protobuf.java.lite)
+
     // Annotations
     implementation(project(":annotations"))
 
     // KSP
     ksp(project(":processor"))
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.25.8"
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }

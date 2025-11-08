@@ -3,6 +3,7 @@
 # Plugins
 agp = "9.0.0-alpha11"
 kotlin = "2.3.0-Beta2"
+protobuf = "0.9.5"
 ksp = "2.3.2"
 
 coreKtx = "1.17.0"
@@ -12,6 +13,12 @@ material = "1.14.0-alpha06"
 # Xposed
 xposed = "82"
 xpHelper = "dcecc33f56"
+
+# Json
+fastjson2 = "2.0.60"
+
+# ProtoBuf
+protobuf-javalite = "4.33.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -25,8 +32,15 @@ xphelper = { group = "com.github.suzhelan", name = "XPHelper", version.ref = "xp
 # KSP
 ksp-api = { group = "com.google.devtools.ksp", name = "symbol-processing-api", version.ref = "ksp" }
 
+# Json
+fastjson2 = { module = "com.alibaba.fastjson2:fastjson2", version.ref = "fastjson2" }
+
+# ProtoBuf
+protobuf-java-lite = { group = "com.google.protobuf", name = "protobuf-java", version.ref = "protobuf-javalite" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
