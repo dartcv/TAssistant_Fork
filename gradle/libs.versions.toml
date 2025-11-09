@@ -10,6 +10,9 @@ coreKtx = "1.17.0"
 appcompat = "1.7.1"
 material = "1.14.0-alpha06"
 
+# LSParanoid
+lsparanoid = "0.6.0"
+
 # Xposed
 xposed = "82"
 xpHelper = "dcecc33f56"
@@ -24,6 +27,9 @@ protobuf-javalite = "4.33.0"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# LSParanoid
+lsparanoid = { group = "org.lsposed.lsparanoid", name = "gradle-plugin", version.ref = "lsparanoid" }
 
 # Xposed
 xposed-api = { group = "de.robv.android.xposed", name = "api", version.ref = "xposed" }

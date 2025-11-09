@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.ksp)
+    id("org.lsposed.lsparanoid")
 }
 
 android {
@@ -94,4 +95,11 @@ protobuf {
             }
         }
     }
+}
+
+lsparanoid {
+    seed = 1209
+    classFilter = { true }
+    includeDependencies = false
+    variantFilter = { true }
 }
