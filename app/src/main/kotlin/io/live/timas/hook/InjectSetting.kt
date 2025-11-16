@@ -63,39 +63,45 @@ object InjectSetting : XBridge() {
                     )
 
                     // 创建设置项
-                    val item = itemClass.getDeclaredConstructor(
-                        Context::class.java,
-                        Int::class.java,
-                        CharSequence::class.java,
-                        Int::class.java
-                    ).apply { isAccessible = true }.newInstance(
+                    val item = DexFinder.findMethod {
+                        parameters = arrayOf(
+                            Context::class.java,
+                            Int::class.java,
+                            CharSequence::class.java,
+                            Int::class.java
+                        )
+                    }.firstConstructorOrNull()
+                        .apply { isAccessible = true }.newInstance(
                         context, R.id.inject_setting, "TAssistant", iconResId
                     )
 
                     // 设置点击事件
-                    val functionClass = classLoader!!.loadClass("kotlin.jvm.functions.Function0")
-                    itemClass.declaredMethods.singleOrNull {
-                        it.returnType == Void.TYPE &&
-                                it.parameterCount == 1 &&
-                                functionClass.isAssignableFrom(it.parameterTypes[0])
-                    }?.apply {
-                        isAccessible = true
-                        invoke(
-                            item, Proxy.newProxyInstance(
-                                classLoader, arrayOf(functionClass),
-                                OnClickListener(context, itemClass)
+                    val functionClass = classLoader.loadClass("kotlin.jvm.functions.Function0")
+                    DexFinder.findMethod {
+                        declaredClass = itemClass
+                        paramCount = 1
+                        returnType = Void.TYPE
+                    }.first()
+                        .apply {
+                            isAccessible = true
+                            invoke(
+                                item, Proxy.newProxyInstance(
+                                    classLoader, arrayOf(functionClass),
+                                    OnClickListener(context, itemClass)
+                                )
                             )
-                        )
-                    } ?: continue
+                        } ?: continue
 
                     // 创建设置组并添加到列表
                     val itemGroup = ArrayList<Any?>().apply { add(item) }
 
-                    wrapperClass.declaredConstructors
-                        .singleOrNull { it.parameterCount == 5 }
-                        ?.apply { isAccessible = true }
-                        ?.newInstance(itemGroup, null, null, 6, null)
-                        ?.let {
+                    DexFinder.findMethod {
+                        declaredClass = wrapperClass
+                        paramCount = 5
+                    }.firstConstructorOrNull()
+                        .apply { isAccessible = true }
+                        .newInstance(itemGroup, null, null, 6, null)
+                        .let {
                             itemGroupList.add(0, it)
                             return itemGroupList
                         }

@@ -15,15 +15,16 @@ import io.live.timas.api.ContactUtils
 import io.live.timas.api.TIMContactUpdateListener
 import io.live.timas.hook.base.SwitchHook
 import io.live.timas.hook.utils.XLog
+import io.live.timas.util.LayoutHelper
 import top.sacz.xphelper.dexkit.DexFinder
 import top.sacz.xphelper.ext.toClass
 
 @RegisterToUI
 object TitleBarEssence : SwitchHook() {
 
-    override val name = "TIM 群标题栏添加精华消息入口"
+    override val name = "为群聊顶栏添加 精华消息 入口"
 
-    override val description = "仅适配 TIM_NT"
+    override val description = "点击即可查看历史 精华消息"
 
     override val category = UiCategory.MESSAGE
     private val Layout_Id = "TitleBarEssence".hashCode()
@@ -39,12 +40,12 @@ object TitleBarEssence : SwitchHook() {
             if (!rootView.children.map { it.id }.contains(Layout_Id)) {
                 val imageView = ImageView(view.context).apply {
                     layoutParams = RelativeLayout.LayoutParams(
-                        dp(context, 20f),
-                        dp(context, 20f)
+                        LayoutHelper.dp2px(context, 20f),
+                        LayoutHelper.dp2px(context, 20f)
                     ).apply {
                         addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
                         addRule(RelativeLayout.CENTER_VERTICAL)
-                        marginEnd = dp(view.context, 70f)
+                        marginEnd = LayoutHelper.dp2px(view.context, 70f)
                     }
                     id = Layout_Id
                     val iconResId = context.resources.getIdentifier(
@@ -98,6 +99,4 @@ object TitleBarEssence : SwitchHook() {
         }
         return aio.let { ContactUtils.getGroupUinFromAIOContact(it) }
     }
-    fun dp(ctx: Context, value: Float): Int =
-        (ctx.resources.displayMetrics.density * value + 0.5f).toInt()
 }
