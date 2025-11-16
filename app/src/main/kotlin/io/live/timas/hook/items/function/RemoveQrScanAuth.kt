@@ -18,7 +18,7 @@ object RemoveQrScanAuth : SwitchHook() {
         DexFinder.findMethod {
             declaredClass = managerClass
             returnType = Void.TYPE
-            parameters = arrayOf(Boolean::class.java)
+            paramCount = 3
         }.hookBefore {
             args[0] = false
         }

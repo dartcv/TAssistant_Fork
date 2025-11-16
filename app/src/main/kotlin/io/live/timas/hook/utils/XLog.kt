@@ -1,19 +1,18 @@
 package io.live.timas.hook.utils
 
 import de.robv.android.xposed.XposedBridge
-import io.live.timas.R
 
 object XLog {
     fun i(msg: Any? = null) {
-        XposedBridge.log("[${R.string.app_name}/I] $msg")
+        XposedBridge.log("[TAssistant/I] $msg")
     }
     fun d(msg: Any? = null) {
-        XposedBridge.log("[${R.string.app_name}/D] $msg")
+        XposedBridge.log("[TAssistant/D] $msg")
     }
     fun w(msg: Any? = null) {
-        XposedBridge.log("[${R.string.app_name}/W] $msg")
+        XposedBridge.log("[TAssistant/W] $msg")
     }
     fun e(msg: Any? = null) {
-        XposedBridge.log("[${R.string.app_name}/E] $msg")
+        XposedBridge.log("[TAssistant/E] $msg")
     }
 }
