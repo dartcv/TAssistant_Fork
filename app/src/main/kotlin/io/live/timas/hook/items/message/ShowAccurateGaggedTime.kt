@@ -10,7 +10,9 @@ import top.sacz.xphelper.ext.toClass
 @RegisterToUI
 object ShowAccurateGaggedTime: SwitchHook() {
 
-    override val name = "显示精准禁言时间"
+    override val name = "显示更详细的禁言时间"
+
+    override val description = "禁言时间精确到秒"
 
     override val category = UiCategory.MESSAGE
 

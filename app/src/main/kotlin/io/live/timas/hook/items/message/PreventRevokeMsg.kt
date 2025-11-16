@@ -28,12 +28,12 @@ object PreventRevokeMsg : SwitchHook() {
 
     override val category = UiCategory.MESSAGE
 
-    private val viewId = 0x298382
+    private const val viewId = 0x298382
     private var retractMessageMap: MutableMap<String, MutableList<Int>> = HashMap()
     override fun onHook(ctx: Context, loader: ClassLoader) {
         readData()
 
-        MethodUtils.create("com.tencent.qqnt.kernel.nativeinterface.IQQNTWrapperSession\$CppProxy")
+        MethodUtils.create($$"com.tencent.qqnt.kernel.nativeinterface.IQQNTWrapperSession$CppProxy")
             .methodName("onMsfPush")
             .params(
                 String::class.java,
@@ -102,7 +102,7 @@ object PreventRevokeMsg : SwitchHook() {
         val contentId: Int = TIMMsgViewAdapter.getContentViewId()
         //制定约束布局参数 用反射做 不然androidx引用的是模块的而不是QQ自身的
         val newLayoutParams: LayoutParams = ConstructorUtils.newInstance(
-            ClassUtils.findClass("androidx.constraintlayout.widget.ConstraintLayout\$LayoutParams"),
+            ClassUtils.findClass($$"androidx.constraintlayout.widget.ConstraintLayout$LayoutParams"),
             arrayOf<Class<*>?>(
                 Int::class.javaPrimitiveType,
                 Int::class.javaPrimitiveType

@@ -1,5 +1,6 @@
 package io.live.timas.hook.items.message.core
 
+import android.annotation.SuppressLint
 import com.google.protobuf.ByteString
 import de.robv.android.xposed.XC_MethodHook
 import io.live.timas.api.TIMEnvTool
@@ -106,6 +107,7 @@ object PreventRevokeMsgCore {
         )
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun onGroupRecallByMsgPush(
         operationInfoByteArray: ByteArray,
         msgPush: MsgPushOuterClass.MsgPush,
