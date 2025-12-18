@@ -2,13 +2,13 @@
 
 # Plugins
 agp = "9.0.0-beta05"
-kotlin = "2.3.0-RC3"
-protobuf = "0.9.5"
+kotlin = "2.3.0"
+protobuf = "0.9.6"
 ksp = "2.3.2"
 
 coreKtx = "1.17.0"
 appcompat = "1.7.1"
-material = "1.14.0-alpha07"
+material = "1.14.0-alpha08"
 
 # LSParanoid
 lsparanoid = "0.6.0"
