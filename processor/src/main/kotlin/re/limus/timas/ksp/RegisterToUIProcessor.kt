@@ -28,6 +28,7 @@ class RegisterToUIProcessor(
         val hookClasses = validSymbols
             .filterIsInstance<KSClassDeclaration>()
             .mapNotNull { it.qualifiedName?.asString() }
+            .sorted() // 显式排序以确保生成的代码顺序固定
             .toList()
 
         if (hookClasses.isEmpty()) {
@@ -105,4 +106,3 @@ class RegisterToUIProcessorProvider : SymbolProcessorProvider {
         )
     }
 }
-

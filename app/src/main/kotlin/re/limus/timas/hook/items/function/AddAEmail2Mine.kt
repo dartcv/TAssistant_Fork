@@ -16,7 +16,7 @@ import top.sacz.xphelper.reflect.FieldUtils
 import top.sacz.xphelper.reflect.MethodUtils
 
 @RegisterToUI
-object AddEmail2Mine : SwitchHook() {
+object AddAEmail2Mine : SwitchHook() {
 
     override val name = "添加 邮箱 快捷入口"
 
