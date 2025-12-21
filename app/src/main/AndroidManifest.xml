@@ -13,7 +13,7 @@
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
-            android:value="Test Now" />
+            android:value="Make TIM Great Again!" />
         <meta-data
             android:name="xposedminversion"
             android:value="82" />
