@@ -16,8 +16,8 @@ android {
         applicationId = "re.limus.timas"
         minSdk = 27
         targetSdk = 36
-        versionCode = 1200
-        versionName = "v1.2.0.$gitCommitHash"
+        versionCode = 1201
+        versionName = "v1.2.01.$gitCommitHash"
 
         ndk {
             abiFilters.add("arm64-v8a")
@@ -98,7 +98,7 @@ dependencies {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.25.8"
+        artifact = "com.google.protobuf:protoc:4.33.2"
     }
     generateProtoTasks {
         all().forEach { task ->
